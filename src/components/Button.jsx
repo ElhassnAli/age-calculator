@@ -9,7 +9,6 @@ export default function Button() {
           alt="icon-arrow.svg"
           width={50}
           height={50}
-          color="red"
         />
       </button>
     </div>
