@@ -17,7 +17,7 @@ export default function InputYear({ value, onChange, error }) {
         autoComplete="bday-year"
         placeholder="YYYY"
         value={value}
-        className={`h-14 w-full min-w-0 rounded-lg border bg-transparent px-2 text-lg font-bold text-[#141414] caret-[#854dff] outline-none placeholder:text-[#858585] focus:border-[#854dff] sm:h-[68px] sm:px-4 sm:text-[30px] ${
+        className={`h-14 w-full min-w-0 rounded-lg border bg-transparent px-2 text-lg font-bold text-[#141414] caret-[#854dff] outline-none placeholder:text-[#858585] focus:border-[#854dff] sm:h-17 sm:px-4 sm:text-[30px] ${
           error ? "border-[#d66b6b]" : "border-[#dbdbdb]"
         }`}
         onChange={(event) => onChange(event.target.value)}
