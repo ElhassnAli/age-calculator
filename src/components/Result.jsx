@@ -1,14 +1,17 @@
-export default function Result() {
+export default function Result({ result }) {
   return (
-    <div className="pl-15 text-7xl font-bold italic pb-15">
-      <p className="flex items-center">
-        <span className="text-purple-500 mr-5  text-8xl">--</span>Years
+    <div
+      className="text-[clamp(40px,11vw,64px)] leading-[1.16] font-extrabold tracking-[-0.065em] italic sm:text-[clamp(48px,7vw,88px)] sm:leading-[1.12]"
+      aria-live="polite"
+    >
+      <p className="m-0">
+        <span className="text-[#854dff] tracking-[-0.045em]">{result?.years ?? "--"}</span> years
       </p>
-      <p className="flex items-center">
-        <span className="text-purple-500 mr-5 text-8xl">--</span>Months
+      <p className="m-0">
+        <span className="text-[#854dff] tracking-[-0.045em]">{result?.months ?? "--"}</span> months
       </p>
-      <p className="flex items-center">
-        <span className="text-purple-500 mr-5 text-8xl">--</span>days
+      <p className="m-0">
+        <span className="text-[#854dff] tracking-[-0.045em]">{result?.days ?? "--"}</span> days
       </p>
     </div>
   );

@@ -1,16 +1,34 @@
-export default function InputYear({ year, setYear }) {
+export default function InputYear({ value, onChange, error }) {
   return (
-    <div className="flex flex-col justify-start font-bold gap-2">
-      <p className="text-gray-500">Year</p>
+    <div className="flex min-w-0 flex-col gap-2">
+      <label
+        className={`text-[11px] leading-none font-bold tracking-[0.16em] uppercase sm:text-sm sm:tracking-[0.2em] ${
+          error ? "text-[#d66b6b]" : "text-[#716f6f]"
+        }`}
+        htmlFor="birth-year"
+      >
+        Year
+      </label>
       <input
+        id="birth-year"
+        name="year"
         type="text"
+        inputMode="numeric"
+        autoComplete="bday-year"
         placeholder="YYYY"
-        className="px-2 py-2 w-34 outline-none border-2 border-gray-200 text-[32px] rounded-lg"
-        value={year}
-        onChange={(e) => {
-          setYear(e.target.value);
-        }}
+        value={value}
+        className={`h-14 w-full min-w-0 rounded-lg border bg-transparent px-2 text-lg font-bold text-[#141414] caret-[#854dff] outline-none placeholder:text-[#858585] focus:border-[#854dff] sm:h-[68px] sm:px-4 sm:text-[30px] ${
+          error ? "border-[#d66b6b]" : "border-[#dbdbdb]"
+        }`}
+        onChange={(event) => onChange(event.target.value)}
+        aria-invalid={Boolean(error)}
+        aria-describedby={error ? "birth-year-error" : undefined}
       />
+      {error && (
+        <span className="min-h-4 text-[9px] leading-[1.35] text-[#d66b6b] italic sm:text-[11px]" id="birth-year-error">
+          {error}
+        </span>
+      )}
     </div>
   );
 }

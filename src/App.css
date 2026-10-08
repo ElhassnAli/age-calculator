@@ -4,3 +4,21 @@
 @theme {
   --font-display: "Poppins", sans-serif;
 }
+
+:root {
+  font-family: "Poppins", sans-serif;
+  color: #141414;
+  background: #f0f0f0;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer base {
+  body {
+    min-width: 320px;
+    min-height: 100vh;
+    margin: 0;
+  }
+}

@@ -1,26 +1,42 @@
-import { useState } from "react";
+import Button from "./components/Button";
 import InputDay from "./components/InputDay";
 import InputMonth from "./components/InputMonth";
 import InputYear from "./components/InputYear";
 import Result from "./components/Result";
-import Button from "./components/Button";
+import useAgeCalculator from "./hooks/useAgeCalculator";
 
 export default function App() {
-  const [day, setDay] = useState(null);
-  const [month, setMonth] = useState(null);
-  const [year, setYear] = useState(null);
+  const { birthDate, errors, result, updateField, handleSubmit } =
+    useAgeCalculator();
 
   return (
-    <div className="font-display bg-gray-100 min-h-dvh flex justify-center items-center">
-      <div className="md:w-[50%] bg-white w-[90%] flex flex-col justify-between rounded-3xl min-h-[50%] ">
-        <div className=" flex  gap-15 items-center justify-start pl-15  pt-15">
-          <InputDay day={day} setDay={setDay} />
-          <InputMonth month={month} setMonth={setMonth} />
-          <InputYear year={year} setYear={setYear} />
-        </div>
-        <Button />
-        <Result />
-      </div>
-    </div>
+    <main className="grid min-h-screen place-items-center px-4 py-6 sm:px-6 sm:py-8">
+      <section
+        className="w-full max-w-210 rounded-[24px_24px_110px_24px] bg-white px-6 py-10 sm:rounded-[24px_24px_180px_24px] sm:p-14"
+        aria-label="Age calculator"
+      >
+        <form onSubmit={handleSubmit} noValidate>
+          <div className="grid grid-cols-3 gap-3 sm:max-w-108 sm:gap-6">
+            <InputDay
+              value={birthDate.day}
+              onChange={(value) => updateField("day", value)}
+              error={errors.day}
+            />
+            <InputMonth
+              value={birthDate.month}
+              onChange={(value) => updateField("month", value)}
+              error={errors.month}
+            />
+            <InputYear
+              value={birthDate.year}
+              onChange={(value) => updateField("year", value)}
+              error={errors.year}
+            />
+          </div>
+          <Button />
+        </form>
+        <Result result={result} />
+      </section>
+    </main>
   );
 }
